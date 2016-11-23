@@ -30,3 +30,9 @@ On Windows, start a command prompt and type
 
     C:\gitrepos\vl\>python winlamp.pyw
 
+Or, if you prefer git-bash on windows, type
+
+    $ cd src
+    $ winpty python winlamp.pyw
+
+(The winpty is for getting Python to run in Windows git-bash properly. See http://stackoverflow.com/a/36530750)
