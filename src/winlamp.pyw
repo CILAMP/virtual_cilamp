@@ -52,6 +52,10 @@ parser.add_option("-l", "--log",
                   default=None)
 (options, args) = parser.parse_args()
 
+print("--MANUAL--")
+parser.print_help()
+print("----------")
+
 CIMID = options.cimid
 
 
@@ -72,9 +76,9 @@ def log(msg):
 # (the OptionParser handles case 1 and 3;
 # algo below hacks itself into 2!)
 if CIMID == mac:
-    print(".id file found, using it.")
     idfile = 'winlamp.id'
     if os.path.exists('winlamp.id'):
+        print(".id file found, using it.")
         with open(idfile) as f:
             CIMID = f.read().strip()
 
@@ -115,10 +119,6 @@ LAMP_URL = 'https://%s/v1/%s/' % (API_HOST, CIMID)
 
 def colorapi_url(r, g, b):
     return LAMP_URL + 'color=%d,%d,%d' % (r, g, b)
-
-
-def pulseapi_url(r, g, b, hz):
-    return LAMP_URL + 'pulse=%d,%d,%d,%f' % (r, g, b, hz)
 
 
 def state_changed(new_state):
@@ -185,31 +185,6 @@ def update_color():
 canvas.after(20, update_color)
 
 
-def http_get(url):
-    print("GET %s" % url)
-    if PY2:
-        from urllib2 import urlopen
-    else:
-        from urllib.request import urlopen
-    import ssl
-    ctx = ssl.create_default_context()
-    ctx.check_hostname = False
-    ctx.verify_mode = ssl.CERT_NONE
-    urlopen(url, context=ctx).read()
-
-
-def show_green():
-    http_get(colorapi_url(0, 255, 0))
-
-
-def show_yellow_pulse():
-    http_get(pulseapi_url(255, 255, 0, 0.3))
-
-
-def show_red():
-    http_get(colorapi_url(255, 0, 0))
-
-
 def show_manual():
     messagebox.showinfo("Quck start", manual)
 
@@ -231,10 +206,6 @@ def quit_app():
 popup = Menu(master, tearoff=0)
 popup.add_command(label="Quick start", command=show_manual)
 popup.add_command(label="URL Generator", command=show_tester)
-popup.add_separator()
-popup.add_command(label="Set Green", command=show_green)
-popup.add_command(label="Set Yellow pulse", command=show_yellow_pulse)
-popup.add_command(label="Set Red", command=show_red)
 popup.add_separator()
 popup.add_command(label="Quit", command=quit_app)
 
