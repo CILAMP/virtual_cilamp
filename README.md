@@ -51,7 +51,7 @@ Skip console window like this, in a .bat file:
 
 	REM pythonw.exe = no console window
 	REM -i = specify lamp ID as command line parameter
-	start c:\python27\pythonw.exe C:\Users\OlofB.VOX01\prj\cim\vl\src\winlamp.pyw -i my_own_lamp
+	start C:\Python27\pythonw.exe D:\github\vl\src\winlamp.pyw -i my_own_lamp
 
 Make a shortcut on your desktop to that .bat file and you can set an icon too :)
 
