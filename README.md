@@ -45,7 +45,8 @@ Windows cmd.exe or .bat file environment
 ----------------------------------------
 In command prompt, type
 
-    C:\gitrepos\vl\>python winlamp.pyw
+    C:\gitrepos\vl\>cd src
+    C:\gitrepos\vl\src\>python winlamp.pyw
 
 Skip console window like this, in a .bat file:
 
