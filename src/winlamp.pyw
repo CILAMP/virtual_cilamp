@@ -155,11 +155,10 @@ def lmb_move(ev):
     y = master.winfo_pointery() - oy
     master.geometry("+%d+%d" % (x, y))
 
-C = 2
-winsize = C*2+64  # Tribute to C64 :)
+winsize = 64  # Tribute to C64 :)
 canvas = Canvas(master, width=winsize, height=winsize, highlightthickness=0,
                 bd=0, relief='ridge')
-i = canvas.create_rectangle(C, C, winsize-C*2, winsize-C*2,
+i = canvas.create_rectangle(0, 0, winsize-1, winsize-1,
                             fill="blue", outline="black")
 
 canvas.pack(padx=0, pady=0)
