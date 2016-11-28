@@ -232,8 +232,8 @@ def do_popup(event):
         popup.grab_release()
 
 
-canvas.bind("<Button-2>", do_popup)
-canvas.bind("<Button-3>", do_popup)
+canvas.bind("<ButtonRelease-2>", do_popup)
+canvas.bind("<ButtonRelease-3>", do_popup)
 
 master.overrideredirect(True)
 master.geometry("+250+250")
