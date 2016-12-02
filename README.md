@@ -1,3 +1,5 @@
+![VL Demo](https://raw.githubusercontent.com/CILamp/vl/master/vl_demo.gif)
+
 Virtual CILamp
 ==============
 
