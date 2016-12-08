@@ -114,11 +114,7 @@ CONTROLLER_HOST = options.controller
 CONTROLLER_PORT = int(options.port)
 API_HOST = CONTROLLER_HOST
 API_PORT = 8080
-LAMP_URL = 'https://%s/v0/%s/' % (API_HOST, CIMID)
-
-
-def colorapi_url(r, g, b):
-    return LAMP_URL + 'color=%d,%d,%d' % (r, g, b)
+V1_LAMP_URL = 'https://%s/v1/%s/' % (API_HOST, CIMID)
 
 
 def state_changed(new_state):
@@ -134,7 +130,8 @@ fakelamp = FakeLamp(CONTROLLER_HOST, CONTROLLER_PORT, CIMID,
                     command_handler, state_changed)
 fakelamp.start()
 
-manual = 'ID: %s\n\nMake lamp red:\n%s\n' % (CIMID, colorapi_url(255, 0, 0))
+curl_cmdline = 'curl -X POST -F "color=#FF0000" %s' % V1_LAMP_URL
+manual = 'ID: %s\n\nMake lamp red:\n%s\n' % (CIMID, curl_cmdline)
 print(manual)
 
 master = Tk()
