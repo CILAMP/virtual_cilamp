@@ -198,9 +198,6 @@ def update_color():
 canvas.after(20, update_color)
 
 
-def show_manual():
-    messagebox.showinfo("Quck start", manual)
-
 
 def show_tester():
     print("Opening web based URL generator in browser...")
@@ -217,8 +214,7 @@ def quit_app():
 
 
 popup = Menu(master, tearoff=0)
-popup.add_command(label="Quick start", command=show_manual)
-popup.add_command(label="URL Generator", command=show_tester)
+popup.add_command(label="Control via browser", command=show_tester)
 popup.add_separator()
 popup.add_command(label="Quit", command=quit_app)
 
