@@ -114,7 +114,7 @@ CONTROLLER_HOST = options.controller
 CONTROLLER_PORT = int(options.port)
 API_HOST = CONTROLLER_HOST
 API_PORT = 8080
-LAMP_URL = 'https://%s/v1/%s/' % (API_HOST, CIMID)
+LAMP_URL = 'https://%s/v0/%s/' % (API_HOST, CIMID)
 
 
 def colorapi_url(r, g, b):
