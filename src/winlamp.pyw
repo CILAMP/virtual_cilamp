@@ -210,24 +210,6 @@ def quit_app():
     return ""
 
 
-popup = Menu(master, tearoff=0)
-popup.add_command(label="Control via browser", command=show_tester)
-popup.add_separator()
-popup.add_command(label="Quit", command=quit_app)
-
-
-def do_popup(event):
-    # display the popup menu
-    try:
-        popup.tk_popup(event.x_root, event.y_root, 0)
-    finally:
-        # make sure to release the grab (Tk 8.0a1 only)
-        popup.grab_release()
-
-
-canvas.bind("<ButtonRelease-2>", do_popup)
-canvas.bind("<ButtonRelease-3>", do_popup)
-
 master.overrideredirect(True)
 master.geometry("+250+250")
 master.lift()
