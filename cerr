@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+
+if [ "$#" -ne 2 ]; then
+    echo "Use: cerr <cmd line> <id>"
+    echo " cerr will run the given command line."
+    echo " If the command line executes successfully,"
+    echo " it will color the given CILamp id green."
+    echo " Otherwise, it will be given color red."
+    exit
+fi
+
+curl -X POST -F "color=#ffff00" -F "period=2000" https://api.cilamp.se/v1/$2
+eval $1
+if [ $? -eq 0 ]
+then
+  COLOR="#00ff00"
+else
+  COLOR="#ff0000"
+fi
+curl -X POST -F "color=$COLOR" https://api.cilamp.se/v1/$2
