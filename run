@@ -1,2 +1,2 @@
-cd src && python winlamp.pyw
+cd src && python winlamp.pyw $@
 
