@@ -41,7 +41,9 @@ class FakeLamp(Thread):
                 print("Connecting to %s %d..." % (self.host, self.port))
                 sock.connect(server_address)
                 print("Connected, sending lamp id '%s'." % self.lampid)
-                sock.sendall(makebytes(self.lampid + '\n'))
+                payload = 'Areal ' + self.lampid + '\n'
+                print("Payload = " + payload)
+                sock.sendall(makebytes(payload))
                 print("Waiting for commands.")
                 data = b''
                 self.state_changed('IDLE')
