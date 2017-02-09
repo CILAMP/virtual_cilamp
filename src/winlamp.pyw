@@ -119,11 +119,6 @@ V1_LAMP_URL = 'https://%s/v1/%s/' % (API_HOST, CIMID)
 
 def state_changed(new_state):
     print("Connection state changed to: " + new_state)
-    if new_state in ["CONNECTING", "DISCONNECTED"]:
-        global pulser
-        pulser = Pulser(primary=(50, 50, 200),
-                        secondary=(50, 200, 50),
-                        hz=0.25)
 
 
 fakelamp = FakeLamp(CONTROLLER_HOST, CONTROLLER_PORT, CIMID,
