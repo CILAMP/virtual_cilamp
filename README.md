@@ -1,9 +1,9 @@
 ![VL Demo](https://raw.githubusercontent.com/CILamp/vl/master/vl_demo.gif)
 
-Virtual CILamp
+Virtual CILAMP
 ==============
 
-A virtual CILamp implemented in Python using Tkinter.
+A virtual CILAMP implemented in Python using Tkinter.
 
 Installation
 ------------
