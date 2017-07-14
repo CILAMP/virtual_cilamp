@@ -5,22 +5,30 @@ Virtual CILamp
 
 A virtual CILamp implemented in Python using Tkinter.
 
-Install
--------
+Installation
+------------
+
+Just clone the repo:
+
+    $ git clone https://github.com/CILAMP/virtual_cilamp.git
+    
+
+Dependencies
+------------
 
 Make sure you have Python 2.7 or 3.4+ on your system.
 
 Also make sure you have Tkinter on your system.
 
-Linux/Mac: Simplest way to check that is probably:
+If on Windows, being able to start IDLE is a good check.
+
+On Linux or Mac, if these give no exceptions, you got Tkinter:
 
     $ python
     >>import Tkinter  # If on 2.7
     >>import tkinter  # If on 3.x
 
-If you can import Tkinter, you are most likely fine.
 
-Windows: If on Windows, being able to start IDLE is a good check.
 
 Running
 =======
