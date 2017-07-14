@@ -192,7 +192,7 @@ canvas.after(20, update_color)
 
 def show_tester(e):
     print("Opening web based URL generator in browser...")
-    tester_url = 'https://cilamp.se/api/v1/url-generator/#' + CIMID
+    tester_url = 'https://cilamp.se/url-generator/#' + CIMID
     webbrowser.open(tester_url)
 
 canvas.bind("<Button-2>", show_tester)
