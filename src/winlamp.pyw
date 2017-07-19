@@ -42,9 +42,9 @@ parser.add_option("-p", "--port",
                   dest="port",
                   help="controller port [default: %default]",
                   default=4040)
-parser.add_option("-i", "--cimid",
-                  dest="cimid",
-                  help="Lamp ID [default: %default]",
+parser.add_option("-i", "--systemid",
+                  dest="systemid",
+                  help="System ID [default: %default]",
                   default=mac)
 parser.add_option("-l", "--log",
                   dest="logfile",
@@ -56,7 +56,7 @@ print("--MANUAL--")
 parser.print_help()
 print("----------")
 
-CIMID = options.cimid
+SYSTEMID = options.systemid
 
 
 def log(msg):
@@ -75,12 +75,12 @@ def log(msg):
 # 3. default (succinct MAC)
 # (the OptionParser handles case 1 and 3;
 # algo below hacks itself into 2!)
-if CIMID == mac:
+if SYSTEMID == mac:
     idfile = 'winlamp.id'
     if os.path.exists('winlamp.id'):
         print(".id file found, using it.")
         with open(idfile) as f:
-            CIMID = f.read().strip()
+            SYSTEMID = f.read().strip()
 
 
 def command_handler(commandline):
@@ -114,19 +114,19 @@ CONTROLLER_HOST = options.controller
 CONTROLLER_PORT = int(options.port)
 API_HOST = CONTROLLER_HOST
 API_PORT = 8080
-V1_LAMP_URL = 'https://%s/v1/%s/' % (API_HOST, CIMID)
+V1_LAMP_URL = 'https://%s/v1/%s/' % (API_HOST, SYSTEMID)
 
 
 def state_changed(new_state):
     print("Connection state changed to: " + new_state)
 
 
-fakelamp = FakeLamp(CONTROLLER_HOST, CONTROLLER_PORT, CIMID,
+fakelamp = FakeLamp(CONTROLLER_HOST, CONTROLLER_PORT, SYSTEMID,
                     command_handler, state_changed)
 fakelamp.start()
 
 curl_cmdline = 'curl -X POST -F "color=#FF0000" %s' % V1_LAMP_URL
-manual = 'ID: %s\n\nMake lamp red:\n%s\n' % (CIMID, curl_cmdline)
+manual = 'System ID: %s\n\nMake lamp red:\n%s\n' % (SYSTEMID, curl_cmdline)
 print(manual)
 
 master = Tk()
@@ -192,7 +192,7 @@ canvas.after(20, update_color)
 
 def show_tester(e):
     print("Opening web based URL generator in browser...")
-    tester_url = 'https://cilamp.se/url-generator/#' + CIMID
+    tester_url = 'https://cilamp.se/url-generator/#' + SYSTEMID
     webbrowser.open(tester_url)
 
 canvas.bind("<Button-2>", show_tester)
