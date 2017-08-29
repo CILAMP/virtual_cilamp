@@ -50,6 +50,14 @@ parser.add_option("-l", "--log",
                   dest="logfile",
                   help="Log commands received to file",
                   default=None)
+parser.add_option("-x", "--xposition",
+                  dest="xpos",
+                  help="Horisontal position of Window",
+                  default=100)
+parser.add_option("-y", "--yposition",
+                  dest="ypos",
+                  help="Vertical position of Window",
+                  default=100)
 (options, args) = parser.parse_args()
 
 print("--MANUAL--")
@@ -57,6 +65,8 @@ parser.print_help()
 print("----------")
 
 SYSTEMID = options.systemid
+XPOS = int(options.xpos)
+YPOS = int(options.ypos)
 
 
 def log(msg):
@@ -208,7 +218,7 @@ def quit_app():
 
 
 master.overrideredirect(True)
-master.geometry("+250+250")
+master.geometry("+%d+%d" % (XPOS, YPOS))
 master.lift()
 master.wm_attributes("-topmost", True)
 # master.wm_attributes("-disabled", True)
